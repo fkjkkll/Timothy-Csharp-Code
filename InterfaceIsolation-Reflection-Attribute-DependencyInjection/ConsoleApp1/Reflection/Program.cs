@@ -24,7 +24,8 @@ namespace InterfaceIsolation
             {
                 // === 一次性注册
                 var sc = new ServiceCollection(); // 容器
-                sc.AddScoped(typeof(ITank), typeof(HeavyTank)); // 接口 和 实现该接口的类
+                //sc.AddScoped(typeof(ITank), typeof(HeavyTank)); // 接口 和 实现该接口的类
+                sc.AddScoped<ITank, HeavyTank>(); // 一样的效果
                 var sp = sc.BuildServiceProvider();
                 // === 范围内都可以使用(因为AddScoped)
                 ITank tank = sp.GetService<ITank>();
