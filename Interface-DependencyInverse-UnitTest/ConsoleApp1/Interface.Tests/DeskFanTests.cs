@@ -35,7 +35,7 @@ namespace Interface.Tests
         }
     }
 
-    // ÒıÈëMoqºóÆúÓÃ
+    // å¼•å…¥Moqåå¼ƒç”¨
     class PowerSupplyLowerThanZero : IPowerSupply
     {
         public int GetPower()
@@ -44,7 +44,7 @@ namespace Interface.Tests
         }
     }
 
-    // ÒıÈëMoqºóÆúÓÃ
+    // å¼•å…¥Moqåå¼ƒç”¨
     class PowerSupplyHigherThan200 : IPowerSupply
     {
         public int GetPower()
