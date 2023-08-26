@@ -6,8 +6,6 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
-
-
 public class test : MonoBehaviour
 {
     public Text isSupport;
@@ -21,23 +19,23 @@ public class test : MonoBehaviour
     Vector3 _from;
     Vector3 _to;
 
-
     float _cc = 0;
+
     private void Start() {
         _to = transform.eulerAngles;
 
         btn.onClick.AddListener(Refresh);
 
         if (SystemInfo.supportsGyroscope) {
-            isSupport.text = "֧��";
+            isSupport.text = "支持";
         }
         else {
-            isSupport.text = "��֧��";
+            isSupport.text = "不支持";
         }
     }
     
     void Refresh() {
-        if (SystemInfo.supportsGyroscope) {
+        if (Input.acceleration != Vector3.zero) { // 设备包含重力传感器
             Vector3 acc = Vector3.zero;
             float x = Input.acceleration.x;
             float y = Input.acceleration.y;
@@ -47,7 +45,7 @@ public class test : MonoBehaviour
 
             _from = _to + acc;
         }
-        else {
+        else { // 设备没有重力传感器
             _from = _to + new Vector3(angle, angle, 0);
         }
         transform.eulerAngles = _from;
